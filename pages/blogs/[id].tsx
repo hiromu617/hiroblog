@@ -2,7 +2,7 @@ import type { NextPage } from 'next';
 import Link from 'next/link';
 import { client } from '../../src/libs/client';
 import type { Blog, BlogRes } from '../../src/features/Blog/types';
-import ReactMarkdown from 'react-markdown'
+import ReactMarkdown from 'react-markdown';
 
 type Props = {
   blog: Blog;
@@ -13,7 +13,9 @@ const BlogId: NextPage<Props> = ({ blog }) => {
     <main>
       <h1>{blog.title}</h1>
       <p>{blog.publishedAt}</p>
-      <ReactMarkdown>{blog.content}</ReactMarkdown>
+      <article className="prose">
+        <ReactMarkdown>{blog.content}</ReactMarkdown>
+      </article>
     </main>
   );
 };
