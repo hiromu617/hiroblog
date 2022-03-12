@@ -1,22 +1,7 @@
 import type { NextPage } from 'next';
 import Link from "next/link";
+import type { Blog, BlogRes } from '../src/features/Blog/types';
 import { client } from '../src/libs/client';
-
-type Blog = {
-  readonly id: string;
-  readonly title: string;
-  readonly content: string;
-  readonly createdAt: string;
-  readonly publishedAt: string;
-  readonly reviseAt: string;
-};
-
-type BlogRes = {
-  readonly contents: Blog[];
-  readonly totalCount: number;
-  readonly offset: number;
-  readonly limit: number;
-};
 
 type Props = {
   blogs: Blog[]
