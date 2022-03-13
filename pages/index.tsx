@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
-import Link from 'next/link';
 import type { Blog, BlogRes } from '../src/features/Blog/types';
 import { client } from '../src/libs/client';
+import { BlogCard } from '../src/features/Blog/components/BlogCard';
 
 type Props = {
   blogs: Blog[];
@@ -9,19 +9,10 @@ type Props = {
 
 const Home: NextPage<Props> = ({ blogs }) => {
   return (
-    <div className="w-full md:w-2/3 justify-center m-auto">
+    <div className="w-full md:w-3/5 justify-center m-auto">
       <ul className="flex flex-col gap-5 w-full">
         {blogs.map((blog) => (
-          <Link href={`/blogs/${blog.id}`} key={blog.id} passHref>
-            <a>
-              <li className="card w-full bg-base-100 shadow-xl hover:bg-primary hover:text-white">
-                <div className="card-body">
-                  <h2 className="card-title">{blog.title}</h2>
-                  <p>If a dog chews shoes whose shoes does he choose?</p>
-                </div>
-              </li>
-            </a>
-          </Link>
+          <BlogCard blog={blog} key={blog.id} />
         ))}
       </ul>
     </div>
