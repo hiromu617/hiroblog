@@ -8,7 +8,9 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Header />
-      <Component {...pageProps} />
+      <div className="min-h-screen justify-center p-5 bg-base-200">
+        <Component {...pageProps} />
+      </div>
       <Footer />
     </>
   );
