@@ -1,8 +1,8 @@
 import type { NextPage } from 'next';
-import Link from 'next/link';
 import { client } from '../../src/libs/client';
 import type { Blog, BlogRes } from '../../src/features/Blog/types';
-import ReactMarkdown from 'react-markdown';
+import { BlogDetail } from '../../src/features/Blog/components/BlogDetail';
+import { ShareButtons } from '../../src/components/Elements/ShareButtons';
 
 type Props = {
   blog: Blog;
@@ -10,13 +10,14 @@ type Props = {
 
 const BlogId: NextPage<Props> = ({ blog }) => {
   return (
-    <main>
-      <h1>{blog.title}</h1>
-      <p>{blog.publishedAt}</p>
-      <article className="prose">
-        <ReactMarkdown>{blog.content}</ReactMarkdown>
-      </article>
-    </main>
+    <div className="w-full md:w-3/5 justify-center m-auto">
+      <div className="mb-5">
+        <BlogDetail blog={blog} />
+      </div>
+      <div className="mb-5">
+        <ShareButtons blog={blog} />
+      </div>
+    </div>
   );
 };
 

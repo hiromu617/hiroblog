@@ -7,19 +7,15 @@ type Props = {
   blogs: Blog[];
 };
 
-const Home: NextPage<Props> = ({ blogs }) => {
+const About: NextPage<Props> = ({ blogs }) => {
   return (
     <div className="w-full md:w-3/5 justify-center m-auto">
-      <ul className="flex flex-col gap-5 w-full">
-        {blogs.map((blog, i) => (
-          <BlogCard blog={blog} key={blog.id} isNew={i === 0} />
-        ))}
-      </ul>
+      about page
     </div>
   );
 };
 
-export default Home;
+export default About;
 
 export const getStaticProps = async () => {
   const blogData: BlogRes = await client.get({
