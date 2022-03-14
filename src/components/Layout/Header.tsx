@@ -1,6 +1,5 @@
 import { VFC } from 'react';
 import Link from 'next/link';
-import { FaGithub } from 'react-icons/fa';
 
 export const Header: VFC = () => (
   <div className="navbar bg-base-200">
@@ -10,18 +9,9 @@ export const Header: VFC = () => (
       </Link>
     </div>
     <div className="flex-none">
-      <ul>
-        <li>
-          <a
-            href="https://github.com/hiromu617"
-            rel="noopener noreferrer"
-            target="_blank"
-            className="btn btn-circle btn-ghost"
-          >
-            <FaGithub size={36} />
-          </a>
-        </li>
-      </ul>
+      <Link href="/about">
+        <a className="btn btn-primary mr-5">About</a>
+      </Link>
     </div>
   </div>
 );
