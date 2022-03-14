@@ -15,19 +15,15 @@ export const BlogCard: VFC<Props> = ({ blog, isNew }) => {
         <li className="card w-full bg-base-100 shadow-xl hover:-translate-y-2 duration-200 ease-in-out hover:shadow-2xl">
           <div className="card-body">
             <h2 className="card-title md:text-3xl">{blog.title}</h2>
-            <div className="flex flex-wrap w-full gap-3">
-              {isNew && (
-                <div className="badge badge-accent badge-lg imary">
-                  NEW
-                </div>
-              )}
+            <span>{format(new Date(blog.publishedAt), 'yyyy.MM.dd')}</span>
+            <div className="flex flex-wrap w-full gap-1 md:gap-3">
+              {isNew && <div className="badge badge-accent badge-lg imary">NEW</div>}
               {blog.tags.map((tag) => (
                 <div key={tag.id} className="badge badge-secondary badge-lg imary">
                   {tag.name}
                 </div>
               ))}
             </div>
-            <span>{format(new Date(blog.publishedAt), 'yyyy.MM.dd')}</span>
           </div>
         </li>
       </a>
