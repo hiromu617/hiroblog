@@ -22,7 +22,7 @@ export const BlogCard: VFC<Props> = ({ blog, isNew }) => {
                 </div>
               )}
               {blog.tags.map((tag) => (
-                <div key={tag.id} className="badge badge-lg imary">
+                <div key={tag.id} className="badge badge-secondary badge-lg imary">
                   {tag.name}
                 </div>
               ))}

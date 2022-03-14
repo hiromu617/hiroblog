@@ -18,7 +18,7 @@ export const BlogDetail: VFC<Props> = ({ blog }) => {
       {blog.tags.length !== 0 && (
         <div className="flex flex-wrap w-full gap-3 mb-10 justify-center">
           {blog.tags.map((tag) => (
-            <div key={tag.id} className="badge badge-lg imary">
+            <div key={tag.id} className="badge badge-secondary badge-lg imary">
               {tag.name}
             </div>
           ))}
