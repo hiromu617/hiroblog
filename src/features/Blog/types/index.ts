@@ -1,3 +1,5 @@
+import type { Tag } from '../../Tag/types';
+
 export type Blog = {
   readonly id: string;
   readonly title: string;
@@ -5,6 +7,7 @@ export type Blog = {
   readonly createdAt: string;
   readonly publishedAt: string;
   readonly reviseAt: string;
+  readonly tags: Tag[];
 };
 
 export type BlogRes = {
