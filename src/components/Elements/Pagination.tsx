@@ -1,12 +1,12 @@
 import { VFC } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import { PER_PAGE } from '../../const/index';
 
 type Props = {
   totalCount: number;
 };
 
-const PER_PAGE = 12;
 const range = (start: number, end: number) => [...Array(end - start + 1)].map((_, i) => start + i);
 
 export const Pagination: VFC<Props> = ({ totalCount }) => {
