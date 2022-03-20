@@ -17,7 +17,7 @@ export const Pagination: VFC<Props> = ({ totalCount }) => {
   return (
     <div className="btn-group justify-center drop-shadow-xl">
       {range(1, Math.ceil(totalCount / PER_PAGE)).map((number, index) => (
-        <Link href={`/blogs/page/${number}`} key={index} passHref>
+        <Link href={number === 1 ? '/' : `/blogs/page/${number}`} key={index} passHref>
           <button className={`btn hover:btn-primary ${currentPage === number && 'btn-active'}`}>
             {number}
           </button>

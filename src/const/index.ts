@@ -1,3 +1,3 @@
-const PER_PAGE = 3;
+const PER_PAGE = 12;
 
 export { PER_PAGE };
