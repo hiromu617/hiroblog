@@ -1,12 +1,13 @@
-import type { NextPage } from 'next';
-import type { Blog, BlogRes } from '../src/features/Blog/types';
+import type { NextPage, GetStaticProps } from 'next';
+import { Blog } from '../src/api/types';
 import { client } from '../src/libs/client';
 import { BlogCard } from '../src/features/Blog/components/BlogCard';
 import { PER_PAGE } from '../src/const';
 import { Pagination } from '../src/components/Elements/Pagination';
+import { MicroCMSListContent } from 'microcms-js-sdk';
 
 type Props = {
-  blogs: Blog[];
+  blogs: (Blog & MicroCMSListContent)[];
   totalCount: number;
 };
 
@@ -27,15 +28,13 @@ const Home: NextPage<Props> = ({ blogs, totalCount }) => {
 
 export default Home;
 
-export const getStaticProps = async () => {
-  const blogData: BlogRes = await client.get({
-    endpoint: `blogs?offset=0&limit=${PER_PAGE}`,
-  });
+export const getStaticProps: GetStaticProps = async () => {
+  const response = await client.blogs.$get({ query: { offset: 0, limit: PER_PAGE } });
 
   return {
     props: {
-      blogs: blogData.contents,
-      totalCount: blogData.totalCount,
+      blogs: response.contents,
+      totalCount: response.totalCount,
     },
   };
 };

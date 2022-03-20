@@ -1,12 +1,13 @@
 import type { NextPage } from 'next';
-import type { Blog, BlogRes } from '../../../src/features/Blog/types';
 import { client } from '../../../src/libs/client';
 import { BlogCard } from '../../../src/features/Blog/components/BlogCard';
 import { Pagination } from '../../../src/components/Elements/Pagination';
 import { PER_PAGE } from '../../../src/const/index';
+import { Blog } from '../../../src/api/types';
+import { MicroCMSListContent} from 'microcms-js-sdk';
 
 type Props = {
-  blogs: Blog[];
+  blogs: (Blog & MicroCMSListContent)[];
   totalCount: number;
 };
 
@@ -28,9 +29,7 @@ const BlogPageId: NextPage<Props> = ({ blogs, totalCount }) => {
 export default BlogPageId;
 
 export const getStaticPaths = async () => {
-  const repos: BlogRes = await client.get({
-    endpoint: `blogs`,
-  });
+  const repos = await client.blogs.$get();
 
   const range = (start: number, end: number) =>
     [...Array(end - start + 1)].map((_, i) => start + i);
@@ -44,15 +43,12 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context: any) => {
   const id = context.params.id;
-
-  const data: BlogRes = await client.get({
-    endpoint: `blogs?offset=${(id - 1) * PER_PAGE}&limit=${PER_PAGE}`,
-  });
+  const response = await client.blogs.$get({query :{offset: (id - 1) * PER_PAGE, limit: PER_PAGE}} );
 
   return {
     props: {
-      blogs: data.contents,
-      totalCount: data.totalCount,
+      blogs: response.contents,
+      totalCount: response.totalCount,
     },
   };
 };
