@@ -1,10 +1,11 @@
 import { VFC } from 'react';
 import Link from 'next/link';
-import type { Blog } from '../../../features/Blog/types';
 import { format } from 'date-fns';
+import { Blog } from '../../../../src/api/types';
+import { MicroCMSListContent} from 'microcms-js-sdk';
 
 type Props = {
-  blog: Blog;
+  blog: Blog & MicroCMSListContent;
   isNew?: boolean;
 };
 
