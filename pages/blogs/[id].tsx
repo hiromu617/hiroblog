@@ -11,10 +11,10 @@ type Props = {
 const BlogId: NextPage<Props> = ({ blog }) => {
   return (
     <div className="w-full md:w-3/5 justify-center m-auto">
-      <div className="mb-5">
+      <div className="mb-10">
         <BlogDetail blog={blog} />
       </div>
-      <div className="mb-5">
+      <div className="mb-10">
         <ShareButtons blog={blog} />
       </div>
     </div>
