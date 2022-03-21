@@ -1,12 +1,11 @@
 import { VFC } from 'react';
-import Link from 'next/link';
 import { format } from 'date-fns';
 import ReactMarkdown from 'react-markdown';
 import { Blog } from '../../../../src/api/types';
-import { MicroCMSListContent} from 'microcms-js-sdk';
+import { MicroCMSObjectContent} from 'microcms-js-sdk';
 
 type Props = {
-  blog: Blog & MicroCMSListContent;
+  blog: Blog & MicroCMSObjectContent;
 };
 
 export const BlogDetail: VFC<Props> = ({ blog }) => {

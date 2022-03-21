@@ -1,22 +1,28 @@
 import { VFC } from 'react';
-import type { Blog } from '../../features/Blog/types';
+import type { Blog } from '../../api/types';
 import { TwitterShareButton } from 'react-share';
 import { FaTwitter, FaShare } from 'react-icons/fa';
+import { MicroCMSObjectContent } from 'microcms-js-sdk';
+import { useRouter } from 'next/router';
 
 type Props = {
-  blog: Blog;
+  blog: Blog & MicroCMSObjectContent;
 };
 
-export const ShareButtons: VFC<Props> = ({ blog }) => (
-  <div className="text-center">
-    <div className="text-base-content mb-2 flex justify-center items-center gap-1 drop-shadow-xl">
-      <div className="text-xl font-bold">Share</div>
-      <FaShare size={20} />
+export const ShareButtons: VFC<Props> = ({ blog }) => {
+  const router = useRouter();
+
+  return (
+    <div className="text-center">
+      <div className="text-base-content mb-2 flex justify-center items-center gap-1 drop-shadow-xl">
+        <div className="text-xl font-bold">Share</div>
+        <FaShare size={20} />
+      </div>
+      <TwitterShareButton title={blog.title} url={`https://hiroblog.vercel.app${router.asPath}`}>
+        <button className="btn btn-circle hover:btn-primary shadow-xl">
+          <FaTwitter size={24} />
+        </button>
+      </TwitterShareButton>
     </div>
-    <TwitterShareButton title={blog.title} url={`https://hiroblog.vercel.app/blogs/${blog.id}`}>
-      <button className="btn btn-circle hover:btn-primary shadow-xl">
-        <FaTwitter size={24} />
-      </button>
-    </TwitterShareButton>
-  </div>
-);
+  );
+};
