@@ -1,14 +1,14 @@
 import type { NextPage } from 'next';
-import { client } from '../../../src/libs/client';
-import { BlogCard } from '../../../src/features/Blog/components/BlogCard';
-import { Pagination } from '../../../src/components/Elements/Pagination';
-import { PER_PAGE } from '../../../src/const/index';
-import { Blog, Tag } from '../../../src/api/types';
+import { client } from '../../../../src/libs/client';
+import { BlogCard } from '../../../../src/features/Blog/components/BlogCard';
+import { Pagination } from '../../../../src/components/Elements/Pagination';
+import { PER_PAGE } from '../../../../src/const/index';
+import { Blog, Tag } from '../../../../src/api/types';
 import { MicroCMSListContent } from 'microcms-js-sdk';
-import { TagList } from '../../../src/features/Tag/components/TagList';
+import { TagList } from '../../../../src/features/Tag/components/TagList';
 
 type Props = {
-  tagId: string,
+  tagId: string;
   blogs: (Blog & MicroCMSListContent)[];
   tags: (Tag & MicroCMSListContent)[];
   totalCount: number;
@@ -35,9 +35,10 @@ const BlogPageId: NextPage<Props> = ({ tagId, blogs, tags, totalCount }) => {
 export default BlogPageId;
 
 export const getServerSideProps = async (context: any) => {
+  const id = context.params.id;
   const tagId = context.params.tagId;
   const response = await client.blogs.$get({
-    query: { offset: 0, limit: PER_PAGE, filters: `tags[contains]${tagId}` },
+    query: { offset: (id - 1) * PER_PAGE, limit: PER_PAGE, filters: `tags[contains]${tagId}` },
   });
   const tagResponse = await client.tags.$get();
 
