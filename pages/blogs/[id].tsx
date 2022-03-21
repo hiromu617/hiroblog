@@ -1,11 +1,12 @@
-import type { NextPage } from 'next';
+import type { NextPage, GetStaticProps, GetStaticPaths } from 'next';
 import { client } from '../../src/libs/client';
-import type { Blog, BlogRes } from '../../src/features/Blog/types';
 import { BlogDetail } from '../../src/features/Blog/components/BlogDetail';
 import { ShareButtons } from '../../src/components/Elements/ShareButtons';
+import { Blog } from '../../src/api/types';
+import { MicroCMSObjectContent} from 'microcms-js-sdk';
 
 type Props = {
-  blog: Blog;
+  blog: Blog & MicroCMSObjectContent;
 };
 
 const BlogId: NextPage<Props> = ({ blog }) => {
@@ -23,19 +24,20 @@ const BlogId: NextPage<Props> = ({ blog }) => {
 
 export default BlogId;
 
-export const getStaticPaths = async () => {
-  const data: BlogRes = await client.get({ endpoint: 'blogs' });
-  const paths = data.contents.map((content) => `/blogs/${content.id}`);
+export const getStaticPaths: GetStaticPaths = async () => {
+  const response = await client.blogs.$get();
+  const paths = response.contents.map((content) => `/blogs/${content.id}`);
 
   return { paths, fallback: false };
 };
 
-export const getStaticProps = async (context: any) => {
+export const getStaticProps: GetStaticProps = async (context: any) => {
   const id = context.params.id;
-  const data: Blog = await client.get({ endpoint: 'blogs', contentId: id });
+  const response = await client.blogs._id(id).$get()
+
   return {
     props: {
-      blog: data,
+      blog: response,
     },
   };
 };
