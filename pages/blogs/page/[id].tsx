@@ -19,7 +19,7 @@ const BlogPageId: NextPage<Props> = ({ blogs, totalCount }) => {
           <BlogCard blog={blog} key={blog.id} isNew={i === 0} />
         ))}
       </ul>
-      <div>
+      <div className='mb-10'>
         <Pagination totalCount={totalCount} />
       </div>
     </div>
