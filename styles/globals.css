@@ -13,27 +13,35 @@ aside.msg {
 }
 
 .znc a {
-  color: inherit!important;
+  color: inherit !important;
 }
 
-.znc blockquote{
-  color: inherit!important;
+.znc blockquote {
+  color: inherit !important;
 }
 
-.znc ul>li::marker{
-  color: inherit!important;
+.znc ul > li::marker {
+  color: inherit !important;
 }
 
-.znc ol>li::marker{
-  color: inherit!important;
+.znc ol > li::marker {
+  color: inherit !important;
 }
 
-
-.znc th,td {
-  border-color: hsl(var(--b3))!important;
-  background: inherit!important;
+.znc th,
+td {
+  border-color: hsl(var(--tw-prose-hr)) !important;
+  background: inherit !important;
 }
 .znc th {
-  border-color: hsl(var(--b3))!important;
-  background-color: hsl(var(--b2))!important;
+  border-color: hsl(var(--tw-prose-hr)) !important;
+  background-color: hsl(var(--b2)) !important;
+}
+
+.znc hr {
+  border-top: 2px solid var(--tw-prose-hr) !important;
+}
+
+.znc details[open] summary {
+  background-color: hsl(var(--b2)) !important;
 }
