@@ -3,7 +3,8 @@ import { client } from '../../src/libs/client';
 import { BlogDetail } from '../../src/features/Blog/components/BlogDetail';
 import { ShareButtons } from '../../src/components/Elements/ShareButtons';
 import { Blog } from '../../src/api/types';
-import { MicroCMSObjectContent} from 'microcms-js-sdk';
+import { MicroCMSObjectContent } from 'microcms-js-sdk';
+import markdownToHtml from 'zenn-markdown-html';
 
 type Props = {
   blog: Blog & MicroCMSObjectContent;
@@ -33,8 +34,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async (context: any) => {
   const id = context.params.id;
-  const response = await client.blogs._id(id).$get()
-
+  const response = await client.blogs._id(id).$get();
+  response.content = markdownToHtml(response.content);
+  
   return {
     props: {
       blog: response,

@@ -1,8 +1,8 @@
 import { VFC } from 'react';
 import { format } from 'date-fns';
-import ReactMarkdown from 'react-markdown';
 import { Blog } from '../../../../src/api/types';
-import { MicroCMSObjectContent} from 'microcms-js-sdk';
+import { MicroCMSObjectContent } from 'microcms-js-sdk';
+import 'zenn-content-css';
 
 type Props = {
   blog: Blog & MicroCMSObjectContent;
@@ -24,9 +24,12 @@ export const BlogDetail: VFC<Props> = ({ blog }) => {
           ))}
         </div>
       )}
-      <article className="prose">
-        <ReactMarkdown>{blog.content}</ReactMarkdown>
-      </article>
+      <article
+        dangerouslySetInnerHTML={{
+          __html: `${blog.content}`,
+        }}
+        className="prose znc"
+      />
     </main>
   );
 };

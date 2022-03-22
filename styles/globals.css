@@ -1,3 +1,39 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+aside.msg.alert {
+  background: hsl(var(--er)) !important;
+  color: hsl(var(--erc)) !important;
+}
+
+aside.msg {
+  background: hsl(var(--wa)) !important;
+  color: hsl(var(--wac)) !important;
+}
+
+.znc a {
+  color: inherit!important;
+}
+
+.znc blockquote{
+  color: inherit!important;
+}
+
+.znc ul>li::marker{
+  color: inherit!important;
+}
+
+.znc ol>li::marker{
+  color: inherit!important;
+}
+
+
+.znc th,td {
+  border-color: hsl(var(--b3))!important;
+  background: inherit!important;
+}
+.znc th {
+  border-color: hsl(var(--b3))!important;
+  background-color: hsl(var(--b2))!important;
+}
