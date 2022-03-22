@@ -6,6 +6,7 @@ import { TagList } from '../src/features/Tag/components/TagList';
 import { PER_PAGE } from '../src/const';
 import { Pagination } from '../src/components/Elements/Pagination';
 import { MicroCMSListContent } from 'microcms-js-sdk';
+import { differenceInDays } from 'date-fns';
 
 type Props = {
   blogs: (Blog & MicroCMSListContent)[];
@@ -21,7 +22,11 @@ const Home: NextPage<Props> = ({ blogs, tags, totalCount }) => {
       </div>
       <ul className="flex flex-col gap-5 w-full mb-10">
         {blogs.map((blog, i) => (
-          <BlogCard blog={blog} key={blog.id} isNew={i === 0} />
+          <BlogCard
+            blog={blog}
+            key={blog.id}
+            isNew={differenceInDays(new Date(), new Date(blog.publishedAt)) <= 7}
+          />
         ))}
       </ul>
       <div className="mb-10">
