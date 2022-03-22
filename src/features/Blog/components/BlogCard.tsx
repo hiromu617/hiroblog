@@ -1,7 +1,7 @@
 import { VFC } from 'react';
 import Link from 'next/link';
 import { format } from 'date-fns';
-import { Blog } from '../../../../src/api/types';
+import type { Blog } from '../../../../src/api/types';
 import { MicroCMSListContent} from 'microcms-js-sdk';
 
 type Props = {
