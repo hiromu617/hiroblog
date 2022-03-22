@@ -45,3 +45,15 @@ td {
 .znc details[open] summary {
   background-color: hsl(var(--b2)) !important;
 }
+
+.znc pre {
+  background: var(--tw-prose-pre-bg) !important;
+  color: var(--tw-prose-pre-code) !important;
+}
+.znc pre code {
+  color: var(--tw-prose-pre-code) !important;
+}
+
+.znc h1 {
+  border: none !important;
+}
