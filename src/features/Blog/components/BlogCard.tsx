@@ -2,7 +2,7 @@ import { VFC } from 'react';
 import Link from 'next/link';
 import { format } from 'date-fns';
 import type { Blog } from '../../../../src/api/types';
-import { MicroCMSListContent} from 'microcms-js-sdk';
+import { MicroCMSListContent } from 'microcms-js-sdk';
 
 type Props = {
   blog: Blog & MicroCMSListContent;
@@ -16,7 +16,6 @@ export const BlogCard: VFC<Props> = ({ blog, isNew }) => {
         <li className="card w-full bg-base-100 shadow-xl hover:-translate-y-2 duration-200 ease-in-out hover:shadow-2xl">
           <div className="card-body">
             <h2 className="card-title md:text-3xl">{blog.title}</h2>
-            <span>{format(new Date(blog.publishedAt), 'yyyy.MM.dd')}</span>
             <div className="flex flex-wrap w-full gap-1 md:gap-3">
               {isNew && <div className="badge badge-accent badge-lg imary">NEW</div>}
               {blog.tags.map((tag) => (
@@ -25,6 +24,7 @@ export const BlogCard: VFC<Props> = ({ blog, isNew }) => {
                 </div>
               ))}
             </div>
+            <span>{format(new Date(blog.publishedAt), 'yyyy.MM.dd')}</span>
           </div>
         </li>
       </a>
