@@ -8,6 +8,7 @@ import { useEffect } from 'react';
 import { usePageView, GoogleAnalytics } from '../src/libs/gtag';
 import Head from 'next/head';
 import Script from 'next/script';
+import NextProgress from 'next-progress';
 
 function MyApp({ Component, pageProps }: AppProps) {
   usePageView();
@@ -32,9 +33,10 @@ function MyApp({ Component, pageProps }: AppProps) {
         <link
           rel="icon alternate"
           type="image/png"
-          href="	https://twemoji.maxcdn.com/v/14.0.1/72x72/1f6f9.png"
+          href="https://twemoji.maxcdn.com/v/14.0.1/72x72/1f6f9.png"
         />
       </Head>
+      <NextProgress delay={300} options={{ showSpinner: false }} color="#0B7AFF" />
       <Header />
       <div className="min-h-screen justify-center py-5 px-3 md:px-5 bg-base-200">
         <Component {...pageProps} />
