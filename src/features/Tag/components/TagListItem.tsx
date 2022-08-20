@@ -14,9 +14,19 @@ export const TagListItem: VFC<Props> = ({ tag, isActive }) => {
     <li className="text-center">
       <Link href={`/tags/${tag.id}`}>
         <a className="avatar">
-          <div className={`${isActive && "ring ring-primary ring-offset-base-100 ring-offset-2"} w-16 rounded-full bg-base-100 p-3 shadow-xl hover:ring hover:ring-offset-base-100 hover:ring-offset-2`}>
+          <div
+            className={`${
+              isActive && 'ring ring-primary ring-offset-base-100 ring-offset-2'
+            } w-16 rounded-full bg-base-100 p-3 shadow-xl hover:ring hover:ring-offset-base-100 hover:ring-offset-2`}
+          >
             <div className="w-full h-full relative">
-              <Image src={tag.image.url} layout="fill" alt={`${tag.name}のロゴ`} />
+              {tag.image ? (
+                <Image src={tag.image.url} layout="fill" alt={`${tag.name}のロゴ`} />
+              ) : (
+                <div className="text-3xl absolute justify-center align-middle items-center w-full h-full">
+                  {tag.emoji}
+                </div>
+              )}
             </div>
           </div>
         </a>

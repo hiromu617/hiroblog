@@ -9,9 +9,10 @@ export type Blog = {
 export type Tag = {
   readonly name: string;
   readonly slug: string;
-  readonly image: {
+  readonly image?: {
     url: string;
     width: number;
     height: number;
   };
+  readonly emoji: string;
 };

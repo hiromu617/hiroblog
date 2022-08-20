@@ -38,7 +38,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       </Head>
       <NextProgress delay={300} options={{ showSpinner: false }} color="#0B7AFF" />
       <Header />
-      <div className="min-h-screen justify-center py-5 px-3 md:px-5 bg-base-200">
+      <div className="min-h-screen justify-center py-5 px-2 md:px-5 bg-base-200">
         <Component {...pageProps} />
       </div>
       <Footer />

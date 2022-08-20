@@ -23,7 +23,7 @@ const BlogId: NextPage<Props> = ({ blog }) => {
         <meta property="og:image" content={generateOgpUrl(blog.title)} />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <div className="w-full md:w-3/5 justify-center m-auto">
+      <div className="w-full md:w-[720px] justify-center m-auto">
         <div className="mb-10">
           <BlogDetail blog={blog} />
         </div>

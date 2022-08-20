@@ -10,7 +10,7 @@ type Props = {
 
 export const BlogDetail: VFC<Props> = ({ blog }) => {
   return (
-    <main className="w-full bg-base-100 shadow-xl rounded-2xl px-2 md:px-5 py-10 text-base-content">
+    <main className="w-full bg-base-100 shadow-xl rounded-2xl px-3 md:px-7 pt-10 pb-16 text-base-content">
       <h1 className="text-2xl md:text-3xl font-bold text-center pb-3">{blog.title}</h1>
       <div className="text-center mb-5">
         {format(new Date(blog.publishedAt), 'yyyy.MM.dd hh:mm')}
@@ -28,7 +28,7 @@ export const BlogDetail: VFC<Props> = ({ blog }) => {
         dangerouslySetInnerHTML={{
           __html: `${blog.content}`,
         }}
-        className="prose znc"
+        className="prose znc break-words"
       />
     </main>
   );
