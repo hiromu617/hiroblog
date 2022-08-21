@@ -15,8 +15,7 @@ export const ShareButtons: VFC<Props> = ({ blog }) => {
 
   return (
     <div className="text-center">
-      <div className="text-base-content mb-2 flex justify-center items-center gap-1 drop-shadow-xl">
-        <div className="text-xl font-bold">Share</div>
+      <div className="text-base-content mb-2 flex justify-center items-center drop-shadow-xl">
         <FaShare size={20} />
       </div>
       <TwitterShareButton title={blog.title} url={`${SITE_URL}${router.asPath}`}>

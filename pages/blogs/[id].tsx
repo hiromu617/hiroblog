@@ -1,8 +1,9 @@
 import type { NextPage, GetStaticProps, GetStaticPaths } from 'next';
-import Head from 'next/head'
+import Head from 'next/head';
 import { client } from '../../src/libs/client';
 import { BlogDetail } from '../../src/features/Blog/components/BlogDetail';
 import { ShareButtons } from '../../src/components/Elements/ShareButtons';
+import { LikeButton } from '../../src/features/Like/components/LikeButton';
 import { Blog } from '../../src/api/types';
 import { MicroCMSObjectContent } from 'microcms-js-sdk';
 import markdownToHtml from 'zenn-markdown-html';
@@ -10,9 +11,10 @@ import { generateOgpUrl } from '../../src/utils/index';
 
 type Props = {
   blog: Blog & MicroCMSObjectContent;
+  id: string;
 };
 
-const BlogId: NextPage<Props> = ({ blog }) => {
+const BlogId: NextPage<Props> = ({ blog, id }) => {
   return (
     <>
       <Head>
@@ -27,8 +29,9 @@ const BlogId: NextPage<Props> = ({ blog }) => {
         <div className="mb-10">
           <BlogDetail blog={blog} />
         </div>
-        <div className="mb-10">
+        <div className="flex justify-center items-center gap-5 mb-10">
           <ShareButtons blog={blog} />
+          <LikeButton blogId={id} />
         </div>
       </div>
     </>
@@ -52,6 +55,7 @@ export const getStaticProps: GetStaticProps = async (context: any) => {
   return {
     props: {
       blog: response,
+      id: id,
     },
   };
 };
