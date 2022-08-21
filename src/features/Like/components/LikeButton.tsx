@@ -1,4 +1,5 @@
 import { FC, useState } from 'react';
+import { useLikeCount } from '../hooks/useLikeCount';
 
 type Props = {
   blogId: string;
@@ -6,13 +7,15 @@ type Props = {
 
 export const LikeButton: FC<Props> = ({ blogId }) => {
   const [count, setCount] = useState(0);
+  const data = useLikeCount(blogId);
   const handleClick = () => {
     setCount((count) => count + 1);
   };
+
   return (
     <div>
       <div className="text-base-content mb-2 flex justify-center items-center gap-1 drop-shadow-xl">
-        <div className="text-xl font-bold">{count}</div>
+        <div className="text-xl font-bold">{data?.like_count ?? '...'}</div>
       </div>
       <button
         onClick={handleClick}

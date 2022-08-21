@@ -19,9 +19,9 @@ export const ShareButtons: VFC<Props> = ({ blog }) => {
         <FaShare size={20} />
       </div>
       <TwitterShareButton title={blog.title} url={`${SITE_URL}${router.asPath}`}>
-        <button className="btn btn-circle hover:btn-primary shadow-xl">
+        <div className="btn btn-circle hover:btn-primary shadow-xl">
           <FaTwitter size={24} />
-        </button>
+        </div>
       </TwitterShareButton>
     </div>
   );
